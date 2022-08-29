@@ -205,7 +205,8 @@ K4AROSDevice::K4AROSDevice()
       // Try to match serial number
       if (params_.sensor_sn != "")
       {
-        if (device.get_serialnum() == params_.sensor_sn)
+        std::string sensor_sn = params_.sensor_sn.substr(1,12);
+        if (device.get_serialnum() == sensor_sn)
         {
           k4a_device_ = std::move(device);
           break;
