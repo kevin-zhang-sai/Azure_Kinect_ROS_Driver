@@ -58,30 +58,30 @@ K4AROSDevice::K4AROSDevice()
   static const std::string compressed_png_level = "/compressed/png_level";
 
   // Declare node parameters
-  this->declare_parameter("depth_enabled");
-  this->declare_parameter("depth_mode");
-  this->declare_parameter("color_enabled");
-  this->declare_parameter("color_format");
-  this->declare_parameter("color_resolution");
-  this->declare_parameter("fps");
-  this->declare_parameter("point_cloud");
-  this->declare_parameter("rgb_point_cloud");
-  this->declare_parameter("point_cloud_in_depth_frame");
-  this->declare_parameter("required");
-  this->declare_parameter("sensor_sn");
-  this->declare_parameter("recording_file");
-  this->declare_parameter("recording_loop_enabled");
-  this->declare_parameter("body_tracking_enabled");
-  this->declare_parameter("body_tracking_smoothing_factor");
-  this->declare_parameter("rescale_ir_to_mono8");
-  this->declare_parameter("ir_mono8_scaling_factor");
-  this->declare_parameter("imu_rate_target");
-  this->declare_parameter("wired_sync_mode");
-  this->declare_parameter("subordinate_delay_off_master_usec");
-  this->declare_parameter({depth_raw_topic + compressed_format});
-  this->declare_parameter({depth_raw_topic + compressed_png_level});
-  this->declare_parameter({depth_rect_topic + compressed_format});
-  this->declare_parameter({depth_rect_topic + compressed_png_level});
+  this->declare_parameter("depth_enabled", true);
+  this->declare_parameter("depth_mode", "WFOV_UNBINNED");
+  this->declare_parameter("color_enabled", true);
+  this->declare_parameter("color_format", "bgra");
+  this->declare_parameter("color_resolution", "1536P");
+  this->declare_parameter("fps", 5);
+  this->declare_parameter("point_cloud", true);
+  this->declare_parameter("rgb_point_cloud", true);
+  this->declare_parameter("point_cloud_in_depth_frame", false);
+  this->declare_parameter("required", false);
+  this->declare_parameter("sensor_sn", "''");
+  this->declare_parameter("recording_file", "''");
+  this->declare_parameter("recording_loop_enabled", false);
+  this->declare_parameter("body_tracking_enabled", false);
+  this->declare_parameter("body_tracking_smoothing_factor", 0.0);
+  this->declare_parameter("rescale_ir_to_mono8", false);
+  this->declare_parameter("ir_mono8_scaling_factor", 1.0);
+  this->declare_parameter("imu_rate_target", 0);
+  this->declare_parameter("wired_sync_mode", 0);
+  this->declare_parameter("subordinate_delay_off_master_usec", 0);
+  this->declare_parameter({depth_raw_topic + compressed_format}, "png");
+  this->declare_parameter({depth_raw_topic + compressed_png_level}, 1);
+  this->declare_parameter({depth_rect_topic + compressed_format}, "png");
+  this->declare_parameter({depth_rect_topic + compressed_png_level}, 1);
 
   // Collect ROS parameters from the param server or from the command line
 #define LIST_ENTRY(param_variable, param_help_string, param_type, param_default_val) \
